@@ -101,11 +101,11 @@ console.log('Testing email link...');
 
 When working, you should receive an email like:
 ```
-Subject: Sign in to Tech Innovers
+Subject: Sign in to CodeCrafters
 From: noreply@tech-innov-48b2c.firebaseapp.com
 
-Click the link below to sign in to Tech Innovers:
-[Sign in to Tech Innovers]
+Click the link below to sign in to CodeCrafters:
+[Sign in to CodeCrafters]
 
 If you didn't request this, you can ignore this email.
 ```

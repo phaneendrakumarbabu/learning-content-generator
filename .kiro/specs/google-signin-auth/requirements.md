@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This document specifies the requirements for implementing Google Sign-In authentication with PostgreSQL database integration for the Tech Innovers application. The system will provide secure user authentication, session management, and user data persistence while integrating seamlessly with the existing Next.js application and Transformers theme system.
+This document specifies the requirements for implementing Google Sign-In authentication with PostgreSQL database integration for the CodeCrafters application. The system will provide secure user authentication, session management, and user data persistence while integrating seamlessly with the existing Next.js application and Transformers theme system.
 
 ## Glossary
 

@@ -33,7 +33,7 @@ export function Header() {
   };
 
   return (
-    <header className="bg-white/80 backdrop-blur-md border-b border-white/20 sticky top-0 z-50 shadow-sm">
+    <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-white/20 dark:border-gray-800/20 sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <div className="relative">
@@ -41,7 +41,7 @@ export function Header() {
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-20 rounded-full blur-xl transition-opacity duration-300"></div>
           </div>
           <span className="text-2xl font-bold font-headline bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Tech Innovers
+            CodeCrafters
           </span>
         </Link>
         
@@ -178,7 +178,7 @@ export function Header() {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-white/95 backdrop-blur-md">
+            <SheetContent side="right" className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md">
               <SheetHeader>
                 <SheetTitle className="sr-only">Menu</SheetTitle>
               </SheetHeader>

@@ -48,7 +48,7 @@ After saving, you should see:
 ### After Firebase Console Setup:
 - ✅ Email arrives within 1-5 minutes
 - ✅ Email from: `noreply@tech-innov-48b2c.firebaseapp.com`
-- ✅ Subject: "Sign in to Tech Innovers"
+- ✅ Subject: "Sign in to CodeCrafters"
 - ✅ Contains clickable sign-in link
 
 ## 🔍 Your Current Code Implementation

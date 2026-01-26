@@ -2,7 +2,7 @@
 
 ## Overview
 
-This implementation plan converts the Google Sign-In authentication design into discrete coding tasks for the Tech Innovers Next.js application. The tasks build incrementally from database setup through authentication configuration to UI integration, ensuring each step validates core functionality through testing.
+This implementation plan converts the Google Sign-In authentication design into discrete coding tasks for the CodeCrafters Next.js application. The tasks build incrementally from database setup through authentication configuration to UI integration, ensuring each step validates core functionality through testing.
 
 ## Tasks
 

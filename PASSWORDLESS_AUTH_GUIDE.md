@@ -1,6 +1,6 @@
 # Passwordless Email Link Authentication
 
-I've successfully integrated passwordless email link authentication into your Tech Innovers application! This provides a secure, modern authentication method without passwords.
+I've successfully integrated passwordless email link authentication into your CodeCrafters application! This provides a secure, modern authentication method without passwords.
 
 ## ✅ New Authentication Features
 
@@ -46,7 +46,7 @@ To enable passwordless authentication:
 
 ## 🚀 Available Authentication Methods
 
-Your Tech Innovers app now supports **4 authentication methods**:
+Your CodeCrafters app now supports **4 authentication methods**:
 
 ### **1. Email/Password Sign-In**
 - Traditional username/password authentication
@@ -70,7 +70,7 @@ The login page now includes:
 
 ```
 ┌─────────────────────────────────────┐
-│    🛡️  Welcome to Tech Innovers     │
+│    🛡️  Welcome to CodeCrafters     │
 │     Sign in to access all features  │
 │                                     │
 │  Email: [________________]          │
@@ -104,4 +104,4 @@ The login page now includes:
 - **Mobile-Friendly**: Perfect for mobile users
 - **Accessibility**: Easier for users with disabilities
 
-Your Tech Innovers application now provides a complete, modern authentication experience with multiple secure sign-in options! 🌟
+Your CodeCrafters application now provides a complete, modern authentication experience with multiple secure sign-in options! 🌟

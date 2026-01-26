@@ -50,4 +50,4 @@ Once authentication is working:
 - Sessions will persist across browser restarts
 - Users can sign out using the header menu
 
-Your Tech Innovers application is ready for secure authentication! 🚀
+Your CodeCrafters application is ready for secure authentication! 🚀

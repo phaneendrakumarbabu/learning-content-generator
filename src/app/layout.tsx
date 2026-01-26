@@ -8,7 +8,7 @@ import { TechNewsBot } from '@/components/tech-news-bot';
 import { AuthProvider } from '@/contexts/auth-context';
 
 export const metadata: Metadata = {
-  title: 'Tech Innovers',
+  title: 'CodeCrafters',
   description: 'Explore technology domains, discover career paths, and accelerate your tech journey with AI-powered tools.',
 };
 
@@ -20,11 +20,24 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const theme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (theme === 'dark' || (!theme && prefersDark)) {
+                  document.documentElement.classList.add('dark');
+                }
+              })();
+            `,
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
       </head>
-      <body className={cn('font-body antialiased min-h-screen flex flex-col relative overflow-x-hidden')}>
+      <body className={cn('font-body antialiased min-h-screen flex flex-col relative overflow-x-hidden bg-background text-foreground')}>
         <AuthProvider>
           {/* Animated Background */}
           <div className="fixed inset-0 -z-10 overflow-hidden">

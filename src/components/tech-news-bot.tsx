@@ -134,21 +134,21 @@ export function TechNewsBot() {
         <PopoverTrigger asChild>
           <Button 
             size="lg" 
-            className="rounded-full h-14 w-14 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white shadow-lg transformers-theme:transformers-button transformers-theme:animate-energon-pulse"
+            className="rounded-full h-14 w-14 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white shadow-lg"
           >
             <Bot className="h-6 w-6" />
             <span className="sr-only">Open Tech News Bot</span>
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-96 h-[28rem] mr-4 p-0 flex flex-col transformers-theme:transformers-card">
-          <header className="p-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white transformers-theme:from-slate-800 transformers-theme:to-slate-900 transformers-theme:border-b transformers-theme:border-cyan-500/30">
+        <PopoverContent className="w-96 h-[28rem] mr-4 p-0 flex flex-col">
+          <header className="p-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white">
             <div className="flex items-center justify-between">
               <h3 className="font-bold flex items-center gap-2">
-                <Sparkles className="h-4 w-4 transformers-theme:text-cyan-400"/> 
-                <span className="transformers-theme:matrix-text">Tech News Bot</span>
+                <Sparkles className="h-4 w-4"/> 
+                <span>Tech News Bot</span>
               </h3>
               <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
-                <SelectTrigger className="w-32 h-8 bg-white/20 border-white/30 text-white text-xs transformers-theme:bg-slate-700 transformers-theme:border-cyan-500/30">
+                <SelectTrigger className="w-32 h-8 bg-white/20 border-white/30 text-white text-xs">
                   <Languages className="h-3 w-3 mr-1" />
                   <SelectValue />
                 </SelectTrigger>
@@ -169,7 +169,7 @@ export function TechNewsBot() {
                 <div key={index} className={cn('flex items-start gap-3', message.sender === 'user' ? 'justify-end' : '')}>
                   {message.sender === 'bot' && (
                     <Avatar className='h-8 w-8 shrink-0'>
-                      <AvatarFallback className='bg-blue-600 text-white transformers-theme:bg-cyan-600'>
+                      <AvatarFallback className='bg-blue-600 text-white'>
                         <Bot className='h-4 w-4'/>
                       </AvatarFallback>
                     </Avatar>
@@ -177,8 +177,8 @@ export function TechNewsBot() {
                   <div className={cn(
                     'max-w-[85%] rounded-lg px-3 py-2',
                     message.sender === 'user' 
-                      ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white transformers-theme:from-cyan-600 transformers-theme:to-blue-600 transformers-theme:energon-glow' 
-                      : 'bg-gray-100 border transformers-theme:bg-slate-800 transformers-theme:border-cyan-500/30 transformers-theme:text-cyan-100'
+                      ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white' 
+                      : 'bg-gray-100 border'
                   )}>
                     {message.content}
                   </div>
@@ -187,13 +187,13 @@ export function TechNewsBot() {
               {isLoading && (
                  <div className="flex items-start gap-3">
                    <Avatar className='h-8 w-8'>
-                      <AvatarFallback className='bg-blue-600 text-white transformers-theme:bg-cyan-600'>
+                      <AvatarFallback className='bg-blue-600 text-white'>
                         <Bot className='h-4 w-4'/>
                       </AvatarFallback>
                     </Avatar>
-                   <div className="bg-gray-100 border rounded-lg px-3 py-2 text-sm flex items-center gap-2 transformers-theme:bg-slate-800 transformers-theme:border-cyan-500/30 transformers-theme:text-cyan-100">
-                     <Loader2 className="h-4 w-4 animate-spin transformers-theme:text-cyan-400" /> 
-                     <span className="transformers-theme:matrix-text">
+                   <div className="bg-gray-100 border rounded-lg px-3 py-2 text-sm flex items-center gap-2">
+                     <Loader2 className="h-4 w-4 animate-spin" /> 
+                     <span>
                        {thinkingMessages[selectedLanguage as keyof typeof thinkingMessages]}
                      </span>
                    </div>
@@ -201,19 +201,19 @@ export function TechNewsBot() {
               )}
             </div>
           </ScrollArea>
-          <form onSubmit={handleSubmit} className="p-4 border-t transformers-theme:border-cyan-500/30 transformers-theme:bg-slate-900">
+          <form onSubmit={handleSubmit} className="p-4 border-t">
             <div className="relative">
               <Input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={placeholders[selectedLanguage as keyof typeof placeholders]}
-                className="pr-12 transformers-theme:bg-slate-800 transformers-theme:border-cyan-500/30 transformers-theme:text-cyan-100 transformers-theme:placeholder-cyan-400"
+                className="pr-12"
                 disabled={isLoading}
               />
               <Button 
                 type="submit" 
                 size="icon" 
-                className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 transformers-theme:transformers-button" 
+                className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8" 
                 disabled={isLoading}
               >
                 <Send className="h-4 w-4" />

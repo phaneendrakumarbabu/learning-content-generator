@@ -1,4 +1,4 @@
-# Tech Innovers
+# CodeCrafters
 
 A comprehensive platform for exploring technology domains, career paths, and AI-powered tools for developers and tech enthusiasts.
 
@@ -25,8 +25,8 @@ A comprehensive platform for exploring technology domains, career paths, and AI-
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/Pawank67m/tech-innovers.git
-cd tech-innovers
+git clone https://github.com/Pawank67m/code-crafters.git
+cd code-crafters
 ```
 
 2. Install dependencies:

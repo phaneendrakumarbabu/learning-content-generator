@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/auth-context';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Loader2, CheckCircle, XCircle, Shield, Zap } from 'lucide-react';
+import { Loader2, CheckCircle, XCircle, Zap } from 'lucide-react';
 import { isSignInWithEmailLink } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { PrismFluxLoader } from '@/components/ui/prism-loader';
@@ -14,23 +14,8 @@ export default function EmailLinkPage() {
   const [status, setStatus] = useState<'checking' | 'success' | 'error' | 'invalid'>('checking');
   const [message, setMessage] = useState('Checking your sign-in link...');
   const [debugInfo, setDebugInfo] = useState<any>({});
-  const [isTransformersTheme, setIsTransformersTheme] = useState(false);
   const { completeSignInWithEmailLink } = useAuth();
   const router = useRouter();
-
-  useEffect(() => {
-    const checkTheme = () => {
-      const hasTransformersTheme = document.documentElement.classList.contains('transformers-theme');
-      setIsTransformersTheme(hasTransformersTheme);
-    };
-    
-    checkTheme();
-    
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     const handleEmailLinkSignIn = async () => {
@@ -111,11 +96,7 @@ export default function EmailLinkPage() {
       case 'invalid':
         return <XCircle className="h-12 w-12 text-red-600" />;
       default:
-        return isTransformersTheme ? (
-          <Shield className="h-12 w-12 text-cyan-400" />
-        ) : (
-          <Zap className="h-12 w-12 text-blue-600" />
-        );
+        return <Zap className="h-12 w-12 text-blue-600" />;
     }
   };
 
@@ -124,7 +105,7 @@ export default function EmailLinkPage() {
       case 'checking':
         return 'Signing You In...';
       case 'success':
-        return 'Welcome to Tech Innovers!';
+        return 'Welcome to CodeCrafters!';
       case 'error':
         return 'Sign-In Error';
       case 'invalid':
@@ -135,13 +116,13 @@ export default function EmailLinkPage() {
   };
 
   return (
-    <div className={`min-h-screen flex items-center justify-center p-4 ${isTransformersTheme ? 'transformers-bg-battle' : 'bg-gradient-to-br from-blue-50 via-white to-purple-50'}`}>
-      <Card className={`w-full max-w-md ${isTransformersTheme ? 'transformers-card' : ''}`}>
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
             {getIcon()}
           </div>
-          <CardTitle className={`text-2xl font-bold ${isTransformersTheme ? 'matrix-text' : ''}`}>
+          <CardTitle className="text-2xl font-bold">
             {getTitle()}
           </CardTitle>
         </CardHeader>

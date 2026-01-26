@@ -34,7 +34,7 @@ After enabling Email/Password authentication, you should see:
 
 ```
 ┌─────────────────────────────────────┐
-│        Welcome to Tech Innovers     │
+│        Welcome to CodeCrafters     │
 │     Sign in to access all features  │
 │                                     │
 │  Email: [________________]          │

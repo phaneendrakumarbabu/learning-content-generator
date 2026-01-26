@@ -2,7 +2,7 @@
 
 ## Overview
 
-This design implements a comprehensive authentication system for the Tech Innovers Next.js application using Google OAuth 2.0 and PostgreSQL database integration. The system leverages NextAuth.js v5 (Auth.js) for authentication flows, Prisma ORM for database operations, and integrates seamlessly with the existing Transformers theme system.
+This design implements a comprehensive authentication system for the CodeCrafters Next.js application using Google OAuth 2.0 and PostgreSQL database integration. The system leverages NextAuth.js v5 (Auth.js) for authentication flows, Prisma ORM for database operations, and integrates seamlessly with the existing Transformers theme system.
 
 The architecture follows modern security best practices including PKCE for OAuth flows, secure session management with HTTP-only cookies, and proper token validation. The design maintains the existing application structure while adding authentication capabilities through middleware-based route protection and header integration.
 

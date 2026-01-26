@@ -57,7 +57,7 @@ After clearing cache, you should see this login form:
 
 ```
 ┌─────────────────────────────────────┐
-│    🛡️  Welcome to Tech Innovers     │
+│    🛡️  Welcome to CodeCrafters     │
 │     Sign in to access all features  │
 │                                     │
 │  Email                              │

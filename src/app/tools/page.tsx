@@ -9,25 +9,9 @@ import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 
 export default function ToolsPage() {
-  const [isTransformersTheme, setIsTransformersTheme] = useState(false);
   const { user, loading } = useAuth();
   const router = useRouter();
   const filteredTools = tools.filter(tool => tool.category !== 'Programming Language' && tool.category !== 'Database');
-
-  useEffect(() => {
-    const checkTheme = () => {
-      const hasTransformersTheme = document.documentElement.classList.contains('transformers-theme');
-      setIsTransformersTheme(hasTransformersTheme);
-    };
-    
-    checkTheme();
-    
-    // Listen for theme changes
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    
-    return () => observer.disconnect();
-  }, []);
 
   // Redirect to login if not authenticated
   useEffect(() => {
@@ -39,7 +23,7 @@ export default function ToolsPage() {
   // Show loading while checking authentication
   if (loading || !user) {
     return (
-      <div className={`min-h-screen flex items-center justify-center ${isTransformersTheme ? 'transformers-bg-tools' : ''}`}>
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4" />
           <p className="text-muted-foreground">Loading...</p>
@@ -49,10 +33,10 @@ export default function ToolsPage() {
   }
 
   return (
-    <div className={`min-h-screen ${isTransformersTheme ? 'transformers-bg-tools' : ''}`}>
+    <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8 md:py-16">
         <header className="text-center mb-12">
-          <h1 className={`text-4xl md:text-6xl font-bold font-headline ${isTransformersTheme ? 'energon-text' : ''}`}>
+          <h1 className="text-4xl md:text-6xl font-bold font-headline">
             Tools Explorer
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">

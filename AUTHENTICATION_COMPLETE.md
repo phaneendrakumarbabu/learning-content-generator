@@ -57,7 +57,7 @@
 ## 📱 User Experience
 
 ### **First Visit**
-1. User opens Tech Innovers
+1. User opens CodeCrafters
 2. Automatically redirected to login page
 3. Beautiful login UI with Transformers theme support
 4. One-click Google authentication
@@ -93,7 +93,7 @@
 
 ## 🚀 Ready for Production
 
-Your Tech Innovers application now has:
+Your CodeCrafters application now has:
 - Professional authentication system
 - Secure user management
 - Beautiful UI with theme support

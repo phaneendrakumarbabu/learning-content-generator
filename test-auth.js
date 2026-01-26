@@ -2,7 +2,7 @@
 // This can be run in browser console
 
 const testAuthentication = async () => {
-    console.log('🚀 Testing Tech Innovers Authentication');
+    console.log('🚀 Testing CodeCrafters Authentication');
     console.log('=====================================');
 
     // Test 1: Check if we're on the right page

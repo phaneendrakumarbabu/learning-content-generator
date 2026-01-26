@@ -8,7 +8,7 @@ To complete the Google Sign-in authentication setup, you need to configure Fireb
 
 1. Go to [Firebase Console](https://console.firebase.google.com/)
 2. Click "Create a project" or "Add project"
-3. Enter project name: `tech-innovers` (or your preferred name)
+3. Enter project name: `code-crafters` (or your preferred name)
 4. Enable Google Analytics (optional)
 5. Click "Create project"
 
@@ -27,7 +27,7 @@ To complete the Google Sign-in authentication setup, you need to configure Fireb
 1. Go to **Project Settings** (gear icon)
 2. Scroll down to **Your apps** section
 3. Click **Web app** icon (`</>`)
-4. Register app with name: `tech-innovers-web`
+4. Register app with name: `code-crafters-web`
 5. Copy the Firebase configuration object
 
 ### 4. Update Environment Variables

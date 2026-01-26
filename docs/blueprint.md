@@ -1,4 +1,4 @@
-# **App Name**: Tech Innovers
+# **App Name**: CodeCrafters
 
 ## Core Features:
 

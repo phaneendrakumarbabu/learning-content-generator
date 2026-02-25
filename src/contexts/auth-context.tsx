@@ -123,23 +123,37 @@ export function AuthProvider({ children }: AuthProviderProps) {
       console.log('Auth state changed:', user ? `User: ${user.email}` : 'No user');
       
       if (user) {
-        // User is signed in, save/update user data in Firestore
-        try {
-          const userData = await saveUserToFirestore(user);
-          setUser(user);
-          setAppUser(userData);
-          console.log('User data saved to context:', userData.email);
-        } catch (error) {
-          console.error('Error saving user data:', error);
-          setUser(user);
-          setAppUser(null);
-        }
+        // Set user immediately for faster UI response
+        setUser(user);
+        setLoading(false);
+        
+        // Save/update user data in Firestore in the background
+        saveUserToFirestore(user)
+          .then((userData) => {
+            setAppUser(userData);
+            console.log('User data saved to context:', userData.email);
+          })
+          .catch((error) => {
+            console.error('Error saving user data:', error);
+            // Create a fallback appUser from Firebase auth user
+            const fallbackUser: AppUser = {
+              id: user.uid,
+              displayName: user.displayName || user.email?.split('@')[0] || 'User',
+              email: user.email!,
+              userType: 'student',
+              createdAt: serverTimestamp() as Timestamp,
+            };
+            if (user.photoURL) {
+              fallbackUser.photoUrl = user.photoURL;
+            }
+            setAppUser(fallbackUser);
+          });
       } else {
         // User is signed out
         setUser(null);
         setAppUser(null);
+        setLoading(false);
       }
-      setLoading(false);
     });
 
     return () => unsubscribe();
@@ -181,9 +195,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const saveUserToFirestore = async (user: User): Promise<AppUser> => {
     try {
       const userRef = doc(db, 'users', user.uid);
-      const userSnap = await getDoc(userRef);
       
-      // Clean user data - remove undefined values
+      // Prepare clean user data - remove undefined values
       const userData: any = {
         id: user.uid,
         displayName: user.displayName || user.email?.split('@')[0] || 'User',
@@ -191,42 +204,29 @@ export function AuthProvider({ children }: AuthProviderProps) {
         updatedAt: serverTimestamp(),
       };
 
-      // Only add photoUrl if it exists and is not null/undefined
+      // Only add photoUrl if it exists
       if (user.photoURL) {
         userData.photoUrl = user.photoURL;
       }
 
+      // Check if user exists and update/create in a single operation
+      const userSnap = await getDoc(userRef);
+      
       if (!userSnap.exists()) {
         // New user - set default user type as student
-        const newUserData = {
-          ...userData,
-          userType: 'student',
-          createdAt: serverTimestamp(),
-        };
-        
-        // Remove any undefined values before saving
-        const cleanedData = Object.fromEntries(
-          Object.entries(newUserData).filter(([_, value]) => value !== undefined)
-        );
-        
-        await setDoc(userRef, cleanedData);
-        return {
-          ...cleanedData,
-          createdAt: cleanedData.createdAt as Timestamp,
-        } as AppUser;
-      } else {
-        // Existing user - update login timestamp
-        const existingData = userSnap.data() as AppUser;
-        const updatedData = { ...existingData, ...userData };
-        
-        // Remove any undefined values before saving
-        const cleanedData = Object.fromEntries(
-          Object.entries(updatedData).filter(([_, value]) => value !== undefined)
-        );
-        
-        await setDoc(userRef, cleanedData, { merge: true });
-        return cleanedData as AppUser;
+        userData.userType = 'student';
+        userData.createdAt = serverTimestamp();
       }
+      
+      // Use merge to update existing or create new
+      await setDoc(userRef, userData, { merge: true });
+      
+      // Return the user data with proper types
+      return {
+        ...userData,
+        userType: userData.userType || 'student',
+        createdAt: userData.createdAt || serverTimestamp(),
+      } as AppUser;
     } catch (error) {
       console.error('Error saving user to Firestore:', error);
       // Return a default user object if save fails
@@ -238,7 +238,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
         createdAt: serverTimestamp() as Timestamp,
       };
       
-      // Only add photoUrl if it exists
       if (user.photoURL) {
         fallbackUser.photoUrl = user.photoURL;
       }
